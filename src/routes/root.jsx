@@ -2,10 +2,16 @@ import {
   Link, 
   Outlet, 
   useLoaderData, 
+  Form,
 } from "react-router-dom";
-import { getContacts } from "../contacts";
+import { getContacts, createContact } from "../contacts";
 
 // eslint-disable-next-line react-refresh/only-export-components
+export async function action() {
+  const contact = await createContact();
+  return { contact };
+}
+
 export async function loader() {
   const contacts = await getContacts();
   return { contacts };
