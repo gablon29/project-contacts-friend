@@ -3,13 +3,14 @@ import {
   Outlet,
   useLoaderData,
   Form,
+  redirect,
 } from "react-router-dom";
 import { getContacts, createContact } from "../contacts";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export async function action() {
   const contact = await createContact();
-  return { contact };
+  return redirect(`/contacts/${contact.id}/edit`);
 }
 
 export async function loader() {
