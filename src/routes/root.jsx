@@ -52,7 +52,9 @@ export default function Root() {
               name="q"
               defaultValue={q}
               onChange={(evento => {
-                submit(evento.currentTarget.form);
+                submit(evento.currentTarget.form, {
+                  replace: !isFirstSearch,
+                });
               })}
             />
             <div
