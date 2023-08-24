@@ -34,13 +34,13 @@ export default function Root() {
     new URLSearchParams(navigation.location.search).has("q");
 
   useEffect(() => {
-    document.getElementById("q").value = q
-  }, [q])
+    document.getElementById("q").value = q;
+  }, [q]);
 
   return (
     <>
       <div id="sidebar">
-        <h1>React Router Contacts</h1>
+        <h1>Contacts List</h1>
         <div>
           <Form id="search-form" role="search">
             <input
@@ -51,21 +51,14 @@ export default function Root() {
               type="search"
               name="q"
               defaultValue={q}
-              onChange={(evento => {
+              onChange={(evento) => {
                 submit(evento.currentTarget.form, {
                   replace: !isFirstSearch,
                 });
-              })}
+              }}
             />
-            <div
-              id="search-spinner"
-              aria-hidden
-              hidden={!searching}
-            />
-            <div
-              className="sr-only"
-              aria-live="polite"
-            ></div>
+            <div id="search-spinner" aria-hidden hidden={!searching} />
+            <div className="sr-only" aria-live="polite"></div>
           </Form>
           <Form method="post">
             <button type="submit">New</button>
@@ -108,9 +101,8 @@ export default function Root() {
       </div>
       <div
         id="detail"
-        className={
-          navigation.state === "loading" ? "loading" : ""
-        } >
+        className={navigation.state === "loading" ? "loading" : ""}
+      >
         <Outlet />
       </div>
     </>
